@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3HV5HzF6Gvk/e3mL/OmKGLO4tld4Wb4" crossorigin="anonymous">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            margin: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Sentiment Analysis using CardiffNLP Twitter RoBERTa</h1>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form id="sentiment-form">
+                    <div class="input-group mb-3">
+                        <input type="text" id="text" name="text" class="form-control" placeholder="Enter text to analyze sentiment" required>
+                        <button class="btn btn-primary" type="submit">Analyze</button>
+                    </div>
+                </form>
+                <div id="result" class="d-none">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Sentiment Analysis Result</h5>
+                            <p class="card-text">Sentiment: <span id="sentiment" class="fw-bold"></span></p>
+                            <p class="card-text">Score: <span id="score" class="fw-bold"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBud7O/Z2zKl4yb2yyF0/xYfG5B5lGq5j5E6zTAYGcHgCxqCo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
+    <script>
+        $("#sentiment-form").submit(function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: '/analyze',
+                method: 'POST',
+                data: $(this).serialize(),
+                beforeSend: function() {
+                    $("#result").addClass("d-none");
+                },
+                success: function(response) {
+                    $("#sentiment").text(response.sentiment);
+                    $("#score").text(response.score.toFixed(2));
+                    $("#result").removeClass("d-none");
+                },
+                error: function(error) {
+                    alert("Error: " + JSON.stringify(error));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
