@@ -25,7 +25,63 @@ button.btn {
     border-radius: 0;
 }
 
+.btn-primary {
+    border-radius: 25px;
+    background-color: #1da1f2;
+    border-color: #1da1f2;
+    box-shadow: none;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #0c7abf;
+    border-color: #0c7abf;
+    box-shadow: none;
+}
+
 .card {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tweet-card {
+    background-color: #ebebeb;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.tweet-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.text-muted {
+    color: #657786;
+}
+
+.bi {
+    font-size: 1.2rem;
+}
+
+.bi-heart {
+    color: #e0245e;
+}
+
+.bi-arrow-repeat {
+    color: #17bf63;
+}
+
+.bi-chat,
+.bi-upload {
+    color: #657786;
+}
+
+.bi + .bi {
+    margin-left: 15px;
 }
