@@ -9,9 +9,19 @@
         <title>Sentiment Analysis</title>
     </head>
 <body>
+    <header class="container mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="mb-0">Sentiment Analysis using CardiffNLP Twitter RoBERTa</h1>
+            <div class="toggle-container">
+                <input type="checkbox" id="dark-mode-toggle" class="toggle-checkbox">
+                <label for="dark-mode-toggle" class="toggle-label">
+                    <span class="toggle-text"></span>
+                </label>
+            </div>
+        </div>
+    </header>
     <div class="container">
         <h1 class="text-center mb-4">Twittermood</h1>
-        <p class="text-center mb-4">Sentiment Analysis using CardiffNLP Twitter RoBERTa</p>
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <form id="sentiment-form">
@@ -29,7 +39,7 @@
                                     <div class="d-flex">
                                         <img id="avatar" class="avatar" src="../static/pictures/killua.jpeg" alt="avatar">
                                         <div class="ms-2">
-                                            <strong>Jay-Leo</strong> <span class="text-muted">@jayzing</span>
+                                            <strong>Jay-Leo</strong> <span class="text-muted handle">@jayzing</span>
                                         </div>
                                     </div>
                                     <p id="tweet-text" class="card-text mt-2"></p>
